@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export async function generateStaticParams() {
   const data = await fetch(
@@ -26,9 +27,15 @@ export default async function MovieDetail({ params }) {
           <h2 className="text-2xl">{res.title}</h2>
           <h2 className="text-lg">{res.release_date}</h2>
           <h2>Runtime: {res.runtime} minutes</h2>
-          <h2 className="text-sm bg-green-600 inline-block my-2 py-2 px-4 rounded">
+          <a href="/">
+            <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+              Back
+            </button>
+          </a>
+          <h2 className="text-sm bg-green-600 inline-block my-2 py-2 px-4 rounded mx-4">
             {res.status}
           </h2>
+
           <Image
             className="my-12 w-full"
             src={imagePath + res.backdrop_path}
